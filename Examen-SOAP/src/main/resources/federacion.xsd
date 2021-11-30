@@ -1,0 +1,71 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://espe.edu.ec/arquitectura/soap/examen/ws"
+           targetNamespace="http://espe.edu.ec/arquitectura/soap/examen/ws" elementFormDefault="qualified">
+    
+    
+    <xs:element name="obtenerPartidosFutbolRequest">
+        <xs:complexType/>
+    </xs:element>
+ 
+    <xs:element name="obtenerPartidosFutbolResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="partidoFutbol" type="tns:partidoFutbol" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="obtenerLocalidadesPorPartidoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="codigoPartido" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+ 
+    <xs:element name="obtenerLocalidadesPorPartidoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="partidoFutbol" type="tns:partidoFutbol"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="decrementaDisponibilidadRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="codigoPartido" type="xs:string"/>
+                <xs:element name="codigoLocalidad" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+ 
+    <xs:element name="decrementaDisponibilidadResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="partidoFutbol" type="tns:partidoFutbol"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:complexType name="partidoFutbol">
+        <xs:sequence>
+            <xs:element name="codigoPartido" type="xs:string"/>
+            <xs:element name="equipoLocal" type="xs:string"/>
+            <xs:element name="equipoVisita" type="xs:string"/>
+            <xs:element name="fecha" type="xs:dateTime"/>
+            <xs:element name="lugar" type="xs:string"/>
+            <xs:element name="localidadPartido" type="tns:localidadPartido" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="localidadPartido">
+        <xs:sequence>
+            <xs:element name="codigoLocalidad" type="xs:string"/>
+            <xs:element name="disponibilidad" type="xs:int"/>
+            <xs:element name="precio" type="xs:decimal"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+</xs:schema>
+
+    
